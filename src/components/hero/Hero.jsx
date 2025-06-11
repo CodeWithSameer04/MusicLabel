@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import heroImage from '../../assets/images/hero bg.jpg'; // Correct import
+import { HeroStyle } from '../../assets/config/config'; // Importing HeroStyle if needed
 
 const heroImages = [
   { img: heroImage }
