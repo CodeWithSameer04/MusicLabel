@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('../../assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 700; /* Adjust range if needed */
+    font-style: normal;
+}
+
+.navbar {
+    font-family: 'Josefin Sans', Arial, sans-serif;
+    position: fixed;           /* Overlay on top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;             /* Stay above other content */
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    gap: 43px;                 /* Space between buttons */
+}
+
+.navbar button {
+    /* margin: 0 5px; */       /* Removed for consistent gap */
+    font-family: inherit;
+    padding: 5px 10px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    /* font-weight: 500; */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.navbar button::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    transition: width 0.3s ease;
+}
+
+.navbar button:hover {
+    transform: scale(1.1);
+    font-size: 22px;
+}
+
+.navbar button:hover::after {
+    width: 100%;
+    background-color: transparent;
+}
