@@ -1,30 +1,58 @@
-@font-face {
+/* @font-face {
     font-family: 'Josefin Sans';
     src: url('../../assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 700; /* Adjust range if needed */
+    font-weight: 100 700;
     font-style: normal;
+} */
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../../assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+.header {
+    width: 100%;
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    background: rgba(24,24,24,0.95);
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .navbar {
     font-family: 'Josefin Sans', Arial, sans-serif;
-    position: fixed;           /* Overlay on top */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;             /* Stay above other content */
-    /* border: 2px solid red; */
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;
     padding: 10px 20px;
     background-color: transparent;
+    transition: background 0.3s, box-shadow 0.3s;
     color: white;
-    gap: 43px;                 /* Space between buttons */
+    gap: 43px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar.scrolled {
+    background: rgba(34, 34, 34, 0.7);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .navbar button {
-    /* margin: 0 5px; */       /* Removed for consistent gap */
     font-family: inherit;
     padding: 5px 10px;
     color: white;
@@ -32,21 +60,10 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-    /* font-weight: 500; */
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-}
-
-.navbar button::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: transparent;
-    transition: width 0.3s ease;
+    display: none; /* Hide buttons if not needed */
 }
 
 .navbar button:hover {
@@ -54,7 +71,115 @@
     font-size: 22px;
 }
 
-.navbar button:hover::after {
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    font-family: inherit;
+    margin: 0 4px;
+    display: inline-block;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    /* background: #ffffff; */
+    color: #ffd700;
+    transform: scale(1.08);
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        gap: 20px;
+        font-size: 16px;
+    }
+    .navbar a {
+        font-size: 16px;
+        padding: 7px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 60px;
+    gap: 0;
+  }
+  .nav-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1101;
+    margin-left: auto;
+  }
+  .mobile-menu-btn span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    margin: 4px 0;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-menu-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: transparent; /* No box, no shadow */
+    box-shadow: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1100;
+  }
+  .nav-links.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    animation: slideDown 0.2s;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  .nav-links a {
     width: 100%;
-    background-color: transparent;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 1rem;
+    border-radius: 0;
+    margin: 0;
+    background: transparent;
+  }
 }
