@@ -1,5 +1,14 @@
+html{
+    scroll-behavior: smooth;
+
 *{
-    margin: 0'
+    margin: 0;
     padding: 0;
-    background-color: rgba(99, 99, 99, 0.719);
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #222;
+    color: #000000;
+    font-family: 'Josefin Sans', Arial, sans-serif;
 }

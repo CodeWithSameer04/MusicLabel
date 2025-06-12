@@ -3,7 +3,7 @@ import Header from './components/header/Header';
 import Hero from './components/hero/Hero';
 import Main from './components/main/Main';
 import Footer from './components/footer/Footer';
-
+import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/services/Services';
@@ -16,10 +16,8 @@ import FAQs from './pages/FAQs';
 
 function App() {
   return (
-    <>
-    <div className="div mainContainer">
+    <div className="mainContainer">
       <Header />
-    </div>
       <Hero />
       <Main>
         <Routes>
@@ -35,7 +33,7 @@ function App() {
         </Routes>
       </Main>
       <Footer />
-    </>
+    </div>
   );
 }
 

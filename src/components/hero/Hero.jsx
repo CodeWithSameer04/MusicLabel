@@ -1,20 +1,17 @@
 import React from 'react';
-import './Hero.css';
-import heroImage from '../../assets/images/hero bg.jpg'; // Correct import
+import './hero.css';
+import heroImage from '../../assets/images/hero bg.jpg';
 
-const heroImages = [
-  { img: heroImage }
-  // Add more images if needed
-];
-
-const Hero = () => {
-  return (
-    <div className='heroContainer'>
-      {heroImages.map((ele, idx) => (
-        <img key={idx} src={ele.img} alt="" />
-      ))}
+const Hero = () => (
+  <section className="heroContainer">
+    <img className="hero-bg-img" src={heroImage} alt="Hero" />
+    <div className="heroOverlay" />
+    <div className="heroContent">
+      <h1>Music for the Next Generation</h1>
+      <p>Discover, stream, and connect with the world’s best independent artists.</p>
+      <a href="#explore" className="heroBtn">Explore Now</a>
     </div>
-  );
-};
+  </section>
+);
 
 export default Hero;
