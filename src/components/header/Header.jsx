@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
+// Import your logo image (adjust the path as needed)
+import logo from '../../assets/images/apple-music.png';
 
 function Header() {
   const navbarRef = useRef(null);
@@ -39,8 +41,14 @@ function Header() {
         aria-label="Main navigation"
       >
         <div className="nav-logo">
-          <span>logo daalo idhar
-          </span>
+          <Link to="/">
+            <img
+              src={logo} // Use the imported logo here
+              alt="MusicLabel Logo"
+              className="logo-img"
+              style={{ height: 40 }}
+            />
+          </Link>
         </div>
         <button
           className={`mobile-menu-btn${menuOpen ? ' open' : ''}`}
