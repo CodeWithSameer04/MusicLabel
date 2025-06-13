@@ -91,19 +91,50 @@
     text-decoration: none;
 }
 
+/* Home page: overlay, transparent, fixed */
+.navbar-home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Other pages: normal flow, solid background */
+.navbar-other {
+  position: static;
+  background: #181818;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Only apply top margin when .navbar-other is present (i.e., not on home page) */
+.navbar-other ~ .mainContainer .about-section,
+.navbar-other ~ .about-section {
+  margin-top: 100px; /* Adjust as needed to match your navbar height */
+}
+
+/* Responsive adjustment for smaller screens */
 @media (max-width: 900px) {
-    .navbar {
-        gap: 20px;
-        font-size: 16px;
-    }
-    .navbar a {
-        font-size: 16px;
-        padding: 7px 12px;
-    }
+  .navbar-home,
+  .navbar-other {
+    gap: 20px;
+    font-size: 16px;
+  }
+  .navbar-home a,
+  .navbar-other a {
+    font-size: 16px;
+    padding: 7px 12px;
+  }
 }
 
 @media (max-width: 600px) {
-  .navbar {
+  .navbar-home,
+  .navbar-other {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -151,7 +182,7 @@
     top: 60px;
     left: 0;
     width: 100vw;
-    background: transparent; /* No box, no shadow */
+    background: transparent;
     box-shadow: none;
     flex-direction: column;
     align-items: center;
@@ -181,5 +212,10 @@
     border-radius: 0;
     margin: 0;
     background: transparent;
+  }
+  /* Responsive margin for about-section */
+  .navbar-other ~ .mainContainer .about-section,
+  .navbar-other ~ .about-section {
+    margin-top: 70px;
   }
 }

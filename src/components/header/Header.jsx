@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
+import logo from '../../assets/images/apple-music.png';
 
 function Header() {
   const navbarRef = useRef(null);
@@ -31,16 +32,25 @@ function Header() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  // Determine if on home page
+  const isHome = location.pathname === '/';
+
   return (
     <div className="header">
       <nav
-        className={`navbar${menuOpen ? ' open' : ''}`}
+        className={`navbar${menuOpen ? ' open' : ''} ${isHome ? 'navbar-home' : 'navbar-other'}`}
         ref={navbarRef}
         aria-label="Main navigation"
       >
         <div className="nav-logo">
-          <span>logo daalo idhar
-          </span>
+          <Link to="/">
+            <img
+              src={logo}
+              alt="MusicLabel Logo"
+              className="logo-img"
+              style={{ height: 40 }}
+            />
+          </Link>
         </div>
         <button
           className={`mobile-menu-btn${menuOpen ? ' open' : ''}`}

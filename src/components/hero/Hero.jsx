@@ -1,9 +1,6 @@
 import React from 'react';
-import './hero.css';
-import heroImage from '../../assets/images/hero bg.jpg';
 import './Hero.css';
-import heroImage from '../../assets/images/hero bg.jpg'; // Correct import
-import { HeroStyle } from '../../assets/config/config'; // Importing HeroStyle if needed
+import heroImage from '../../assets/images/hero bg.jpg';
 
 const Hero = () => (
   <section className="heroContainer">
