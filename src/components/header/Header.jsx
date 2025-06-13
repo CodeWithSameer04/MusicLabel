@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
-// Import your logo image (adjust the path as needed)
 import logo from '../../assets/images/apple-music.png';
 
 function Header() {
@@ -33,17 +32,20 @@ function Header() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  // Determine if on home page
+  const isHome = location.pathname === '/';
+
   return (
     <div className="header">
       <nav
-        className={`navbar${menuOpen ? ' open' : ''}`}
+        className={`navbar${menuOpen ? ' open' : ''} ${isHome ? 'navbar-home' : 'navbar-other'}`}
         ref={navbarRef}
         aria-label="Main navigation"
       >
         <div className="nav-logo">
           <Link to="/">
             <img
-              src={logo} // Use the imported logo here
+              src={logo}
               alt="MusicLabel Logo"
               className="logo-img"
               style={{ height: 40 }}

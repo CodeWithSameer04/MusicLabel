@@ -18,10 +18,17 @@ function App() {
   return (
     <div className="mainContainer">
       <Header />
-      <Hero />
       <Main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Home />
+              </>
+            }
+          />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/audio" element={<Audios />} />

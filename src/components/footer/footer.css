@@ -20,25 +20,28 @@ footer {
 }
 
 .footer-logo {
-    font-size: 3.5rem; /* Increased from 2rem to 2.5rem */
+    font-size: 2rem; /* Reduced from 3.5rem */
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px; /* Reduced spacing */
     background: linear-gradient(90deg, #ffffff, #ffffff); /* Default plain white */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    transition: background 0.5s ease;
+    transition: background 1s cubic-bezier(0.4,0,0.2,1), background-position 1s cubic-bezier(0.4,0,0.2,1);
+    transition-delay: 1s, 1s; /* No delay for normal state */
     cursor: pointer;
 }
 
 .footer-logo:hover {
     background: linear-gradient(90deg, #0087fd, #e82626); /* Example gradient (orange-pink) */
+    background-position: 100% 0;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+    transition-delay: 3s, 3s; /* Delay background and background-position by 1.3s */
 }
 
 .footer-center {
