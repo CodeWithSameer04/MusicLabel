@@ -8,7 +8,7 @@ const Hero = () => (
     <div className="heroOverlay" />
     <div className="heroContent">
       <h1>Music for the Next Generation</h1>
-      <p>Discover, stream, and connect with the world’s best independent artists.</p>
+      <p>Discover, stream, and connect with the world's best independent artists.</p>
       <a href="#explore" className="heroBtn">Explore Now</a>
     </div>
   </section>
