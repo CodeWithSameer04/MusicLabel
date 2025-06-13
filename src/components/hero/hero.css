@@ -79,17 +79,17 @@
 .heroBtn {
   display: inline-block;
   padding: 0.85em 2.2em;
-  background: #fff;
+  background: rgb(180, 180, 180);
   color: #181818;
   border-radius: 32px;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: bold;
+  font-size: 1.15rem;
   text-decoration: none;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 .heroBtn:hover {
-  background: #ffd700;
+  background: #ffffff;
   color: #181818;
   transform: translateY(-2px) scale(1.04);
 }
