@@ -1,5 +1,6 @@
 html{
     scroll-behavior: smooth;
+}
 
 *{
     margin: 0;
@@ -11,6 +12,5 @@ body {
     background-color: #222;
     color: #000000;
     font-family: 'Josefin Sans', Arial, sans-serif;
-=======
     /* background-color: rgba(99, 99, 99, 0.719); */
 }
