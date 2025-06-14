@@ -6,6 +6,7 @@ import logo from '../../assets/images/apple-music.png';
 function Header() {
   const navbarRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesDropdown, setServicesDropdown] = useState(false);
   const location = useLocation();
 
   // Glassy scroll effect
@@ -34,6 +35,11 @@ function Header() {
 
   // Determine if on home page
   const isHome = location.pathname === '/';
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setServicesDropdown(false);
+  }, [location.pathname]);
 
   return (
     <div className="header">
@@ -64,9 +70,30 @@ function Header() {
         <div className={`nav-links${menuOpen ? ' show' : ''}`}>
           <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/services" className={location.pathname === '/services' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Services</Link>
-          <Link to="/services/audio" className={location.pathname === '/services/audio' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Audios</Link>
-          <Link to="/services/video" className={location.pathname === '/services/video' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Videos</Link>
+          {/* Services Dropdown */}
+          <div
+            className="services-dropdown"
+            onMouseEnter={() => setServicesDropdown(true)}
+            onMouseLeave={() => setServicesDropdown(false)}
+            tabIndex={0}
+            onFocus={() => setServicesDropdown(true)}
+            onBlur={() => setServicesDropdown(false)}
+            style={{ position: 'relative' }}
+          >
+            <span
+              className={`services-link${location.pathname.startsWith('/services') ? ' active' : ''}`}
+              onClick={() => setServicesDropdown((open) => !open)}
+              style={{ cursor: 'pointer', padding: '8px 16px', display: 'inline-block' }}
+            >
+              Services
+            </span>
+            <div className={`services-dropdown-menu${servicesDropdown ? ' active' : ''}`}>
+              <Link to="/services" onClick={() => { setMenuOpen(false); setServicesDropdown(false); }}>All Services</Link>
+              <Link to="/services/audio" onClick={() => { setMenuOpen(false); setServicesDropdown(false); }}>Audio</Link>
+              <Link to="/services/video" onClick={() => { setMenuOpen(false); setServicesDropdown(false); }}>Video</Link>
+            </div>
+          </div>
+          {/* End Services Dropdown */}
           <Link to="/clients" className={location.pathname === '/clients' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Clients</Link>
           <Link to="/albums" className={location.pathname === '/albums' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Albums</Link>
           <Link to="/contacts" className={location.pathname === '/contacts' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Contacts</Link>
