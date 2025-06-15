@@ -11,6 +11,21 @@ html{
 body {
     background-color: #222;
     color: #000000;
-    font-family: 'Josefin Sans', Arial, sans-serif;
+    font-family: 'Josefin Sans';
     /* background-color: rgba(99, 99, 99, 0.719); */
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
 }
