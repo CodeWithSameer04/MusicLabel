@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,8 +9,7 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
-    padding: 0;
-    background: #ffffff;
+    background: #fff;
 }
 
 main {
@@ -18,17 +17,23 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* background : #fff */
-    /* padding-top: 60px;  // Not needed, Hero will handle overlap */
+}
+
+footer {
+    flex: 0 0 auto;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
     .mainContainer {
         padding: 0 10px;
     }
+    main {
+        padding: 0 2px;
+    }
 }
 
-/* src/pages/Home.jsx ke liye, src/index.css ya App.css me add karein */
+/* For #explore anchor scroll offset */
 #explore {
-  scroll-margin-top: 70px;
+    scroll-margin-top: 70px;
 }

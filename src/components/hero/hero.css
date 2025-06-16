@@ -105,12 +105,16 @@
 
   .hero-bg-img, .heroOverlay {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     min-height: 350px;
+    object-position: center 40%;
+  }
+  .hero-bg-img {
+    transform: scale(1.08);
   }
   .heroContainer {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     min-height: 350px;
   }
 }
@@ -122,11 +126,15 @@
     font-size: 0.95rem;
   }
   .hero-bg-img, .heroOverlay {
-    height: 55vh;
+    height: 100vh;
     min-height: 220px;
+    object-position: center 45%;
+  }
+  .hero-bg-img {
+    transform: scale(1.18);
   }
   .heroContainer {
-    height: 55vh;
+    height: 100vh;
     min-height: 220px;
   }
 }
