@@ -6,9 +6,9 @@ import Footer from './components/footer/Footer';
 import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
-import Services from './pages/services/Services';
-import Audios from './pages/services/Audios';
-import Videos from './pages/services/Videos';
+// import Services from './pages/services/Services';
+// import Audios from './pages/services/Audios';
+// import Videos from './pages/services/Videos';
 import Clients from './pages/Clients';
 import Albums from './pages/Albums';
 import Contacts from './pages/Contacts';
@@ -30,9 +30,9 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/audio" element={<Audios />} />
-          <Route path="/services/video" element={<Videos />} />
+          {/* <Route path="/services" element={<Services />} /> */}
+          {/* <Route path="/services/audio" element={<Audios />} /> */}
+          {/* <Route path="/services/video" element={<Videos />} /> */}
           <Route path="/clients" element={<Clients />} />
           <Route path="/albums" element={<Albums />} />
           <Route path="/contacts" element={<Contacts />} />
