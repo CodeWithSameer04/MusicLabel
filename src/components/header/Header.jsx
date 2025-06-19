@@ -1,213 +1,191 @@
-// src/components/Header/Header.jsx
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeTab, setActiveTab] = useState('Audio');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navRef = useRef(null);
-  
-  // Services dropdown content
+  const headerRef = useRef(null);
+
   const services = {
-    audio: {
-      title: "Audio",
-      items: [
-        "Music Label",
-        "Song Distribution",
-        "Music Production",
-        "Recording Studio",
-        "On Set Sync Sound"
-      ]
-    },
-    video: {
-      title: "Video",
-      items: [
-        "Equipment Hiring",
-        "Video Shooting",
-        "Artist Coordination",
-        "Locations",
-        "Editing",
-        "Graphics",
-        "VFX"
-      ]
-    }
+    Audio: [
+      'Music Label',
+      'Song Distribution',
+      'Music Production',
+      'Recording Studio',
+      'On Set Sync Sound'
+    ],
+    Video: [
+      'Equipment Hiring',
+      'Video Shooting',
+      'Artist Coordination',
+      'Locations',
+      'Editing',
+      'Graphics',
+      'VFX'
+    ]
   };
 
-  const toggleMenu = (menuName) => {
-    setActiveMenu(activeMenu === menuName ? null : menuName);
-  };
-
-  const closeAllMenus = () => {
-    setActiveMenu(null);
-  };
-
-  const handleClickOutside = (e) => {
-    if (navRef.current && !navRef.current.contains(e.target)) {
-      closeAllMenus();
+  const handleClickOutside = (event) => {
+    if (headerRef.current && !headerRef.current.contains(event.target)) {
+      setActiveDropdown(null);
     }
   };
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <header className="header" ref={navRef}>
-      <div className="nav-container">
+    <header className="header" ref={headerRef}>
+      <div className="header-container">
         {/* Logo */}
         <div className="logo">
-          <span className="logo-text">MUZIKK</span>
+          <div className="logo-circle"></div>
         </div>
-        
+
         {/* Desktop Navigation */}
         <nav className="desktop-nav">
-          <ul className="nav-links">
-            <li className="nav-item">
-              <a href="#home" className="nav-link">Home</a>
-            </li>
-            <li className="nav-item">
-              <a href="#about" className="nav-link">About</a>
-            </li>
-            <li 
-              className={`nav-item ${activeMenu === 'services' ? 'active' : ''}`}
-              onMouseEnter={() => toggleMenu('services')}
-              onClick={() => toggleMenu('services')}
-            >
-              <span className="nav-link">Services</span>
-              {activeMenu === 'services' && (
-                <div className="mega-menu">
-                  <div className="menu-container">
-                    <div className="menu-section">
-                      <h3 className="section-title">Audio Services</h3>
-                      <ul>
-                        {services.audio.items.map((item, index) => (
-                          <li key={index}><a href="#">{item}</a></li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="menu-section">
-                      <h3 className="section-title">Video Services</h3>
-                      <ul>
-                        {services.video.items.map((item, index) => (
-                          <li key={index}><a href="#">{item}</a></li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="menu-section">
-                      <h3 className="section-title">Explore More</h3>
-                      <ul>
-                        <li><a href="#">Compare Services</a></li>
-                        <li><a href="#">Shop Equipment</a></li>
-                        <li><a href="#">Financing Options</a></li>
-                        <li><a href="#">Artist Resources</a></li>
-                      </ul>
-                    </div>
-                    <div className="menu-section">
-                      <h3 className="section-title">Support</h3>
-                      <ul>
-                        <li><a href="#">Client Support</a></li>
-                        <li><a href="#">Muzikk Care</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">iCloud for Artists</a></li>
-                      </ul>
-                    </div>
+          <div className="nav-links">
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/about" className="nav-link">About</Link>
+            
+            <div className={`nav-link dropdown${activeDropdown === 'services' ? ' active' : ''}`}>
+              <button
+                className="dropdown-toggle"
+                onClick={() => toggleDropdown('services')}
+                onMouseEnter={() => setActiveDropdown('services')}
+                tabIndex={0}
+                style={{ background: 'none', border: 'none', padding: 0, margin: 0 }}
+              >
+                Services
+              </button>
+              
+              {activeDropdown === 'services' && (
+                <div 
+                  className="dropdown-panel"
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <div className="tab-buttons">
+                    {Object.keys(services).map((tab) => (
+                      <button
+                        key={tab}
+                        className={`tab-button ${activeTab === tab ? 'active' : ''}`}
+                        onMouseEnter={() => setActiveTab(tab)}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </div>
+                  
+                  <div className="dropdown-content">
+                    <ul>
+                      {services[activeTab].map((service, index) => (
+                        <li key={index}>
+                          <a href="#" onClick={(e) => e.preventDefault()}>
+                            {service}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               )}
-            </li>
-            <li className="nav-item">
-              <a href="#clients" className="nav-link">Clients</a>
-            </li>
-            <li className="nav-item">
-              <a href="#albums" className="nav-link">Albums</a>
-            </li>
-            <li className="nav-item">
-              <a href="#contacts" className="nav-link">Contacts</a>
-            </li>
-            <li className="nav-item">
-              <a href="#faqs" className="nav-link">FAQs</a>
-            </li>
-          </ul>
+            </div>
+
+            <Link to="/clients" className="nav-link">Clients</Link>
+            <Link to="/albums" className="nav-link">Albums</Link>
+            <Link to="/contacts" className="nav-link">Contacts</Link>
+            <Link to="/faqs" className="nav-link">FAQs</Link>
+          </div>
         </nav>
-        
-        {/* Mobile Navigation */}
-        <div className="mobile-nav">
-          <button 
-            className={`mobile-menu-btn ${mobileMenuOpen ? 'open' : ''}`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className={`mobile-menu-btn ${mobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      
-      {/* Mobile Menu */}
+
+      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="mobile-menu">
-          <div className="mobile-menu-content">
+        <div className="mobile-menu-overlay">
+          <div className="mobile-menu">
             <div className="mobile-menu-header">
               <div className="logo">
-                <span className="logo-text">MUZIKK</span>
+                <div className="logo-circle"></div>
               </div>
-              <button 
-                className="close-btn"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                &times;
+              <button className="close-btn" onClick={closeMobileMenu}>
+                ×
               </button>
             </div>
             
-            <div className="mobile-menu-links">
-              <a href="#home" className="mobile-link">Home</a>
-              <a href="#about" className="mobile-link">About</a>
+            <nav className="mobile-nav-links">
+              <Link to="/" className="mobile-nav-link" onClick={closeMobileMenu}>
+                Home
+              </Link>
+              <Link to="/about" className="mobile-nav-link" onClick={closeMobileMenu}>
+                About
+              </Link>
               
               <div className="mobile-dropdown">
-                <div 
-                  className="mobile-dropdown-header"
-                  onClick={() => toggleMenu('mobile-services')}
+                <button 
+                  className="mobile-dropdown-toggle "
+                  onClick={() => toggleDropdown('mobile-services')}
                 >
-                  <span>Services</span>
-                  <span>{activeMenu === 'mobile-services' ? '−' : '+'}</span>
-                </div>
-                {activeMenu === 'mobile-services' && (
+                  Services
+                  <span className={`arrow ${activeDropdown === 'mobile-services' ? 'open' : ''}`}>
+                    ▼
+                  </span>
+                </button>
+                
+                {activeDropdown === 'mobile-services' && (
                   <div className="mobile-dropdown-content">
-                    <h4>Audio Services</h4>
-                    {services.audio.items.map((item, index) => (
-                      <a key={index} href="#" className="mobile-dropdown-item">{item}</a>
-                    ))}
-                    
-                    <h4>Video Services</h4>
-                    {services.video.items.map((item, index) => (
-                      <a key={index} href="#" className="mobile-dropdown-item">{item}</a>
+                    {Object.entries(services).map(([category, items]) => (
+                      <div key={category} className="mobile-service-category">
+                        <h4>{category}</h4>
+                        <ul>
+                          {items.map((item, index) => (
+                            <li key={index}>
+                              <a href="#" onClick={(e) => e.preventDefault()}>
+                                {item}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
                   </div>
                 )}
               </div>
               
-              <a href="#clients" className="mobile-link">Clients</a>
-              <a href="#albums" className="mobile-link">Albums</a>
-              <a href="#contacts" className="mobile-link">Contacts</a>
-              <a href="#faqs" className="mobile-link">FAQs</a>
-            </div>
-            
-            <div className="mobile-menu-footer">
-              <div className="mobile-menu-section">
-                <h4>Explore More</h4>
-                <a href="#">Artist Resources</a>
-                <a href="#">Financing Options</a>
-                <a href="#">Equipment Shop</a>
-              </div>
-              <div className="mobile-menu-section">
-                <h4>Support</h4>
-                <a href="#">Client Support</a>
-                <a href="#">Muzikk Care</a>
-                <a href="#">Privacy Policy</a>
-              </div>
-            </div>
+              <Link to="/clients" className="mobile-nav-link" onClick={closeMobileMenu}>
+                Clients
+              </Link>
+              <Link to="/albums" className="mobile-nav-link" onClick={closeMobileMenu}>
+                Albums
+              </Link>
+              <Link to="/contacts" className="mobile-nav-link" onClick={closeMobileMenu}>
+                Contacts
+              </Link>
+              <Link to="/faqs" className="mobile-nav-link" onClick={closeMobileMenu}>
+                FAQs
+              </Link>
+            </nav>
           </div>
         </div>
       )}
