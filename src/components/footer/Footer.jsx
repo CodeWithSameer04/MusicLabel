@@ -1,7 +1,11 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./footer.css";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // Scroll to top handler
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -24,9 +28,18 @@ const Footer = () => {
           </a>
           <div className="footer-left">
             <a
-              href="https://www.awal.com"
+              href="/"
               className="logo-link"
-              aria-label="AWAL"
+              aria-label="Home"
+              onClick={(e) => {
+                e.preventDefault();
+                if (location.pathname === "/") {
+                  navigate("/", { replace: true });
+                  window.location.reload();
+                } else {
+                  navigate("/");
+                }
+              }}
             >
               <span>RVM</span>
             </a>

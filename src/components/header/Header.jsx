@@ -60,13 +60,12 @@ const Header = () => {
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/about" className="nav-link">About</Link>
             
-            <div className={`nav-link dropdown${activeDropdown === 'services' ? ' active' : ''}`}>
+            <div className="nav-link-container">
               <button
-                className="dropdown-toggle"
+                className={`dropdown-toggle${activeDropdown === 'services' ? ' active' : ''}`}
                 onClick={() => toggleDropdown('services')}
                 onMouseEnter={() => setActiveDropdown('services')}
                 tabIndex={0}
-                style={{ background: 'none', border: 'none', padding: 0, margin: 0 }}
               >
                 Services
               </button>
@@ -75,6 +74,7 @@ const Header = () => {
                 <div 
                   className="dropdown-panel"
                   onMouseLeave={() => setActiveDropdown(null)}
+                  style={{ opacity: 1 }}
                 >
                   <div className="tab-buttons">
                     {Object.keys(services).map((tab) => (
