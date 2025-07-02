@@ -215,13 +215,29 @@
   opacity: 0.9;
 }
 
-/* Products Grid */
+/* Products Grid - Legacy */
 .products-grid {
   display: flex;
   flex-direction: column;
   gap: 8px;
   min-width: 250px;
   padding: 10px;
+}
+
+/* Simplified Products Grid */
+.products-simplified-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 350px;
+  padding: 10px;
+}
+
+.product-icon {
+  font-size: 18px;
+  line-height: 1;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .product-item {
@@ -263,7 +279,7 @@
 .product-description {
   color: var(--text-secondary);
   font-size: 12px;
-  max-width: 180px;
+  max-width: 280px;
   line-height: 1.4;
   margin: 0;
   opacity: 0.9;

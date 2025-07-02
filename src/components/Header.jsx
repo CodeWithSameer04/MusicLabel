@@ -101,21 +101,24 @@ const Header = () => {
 
         {/* Products Dropdown */}
         <ButtonMenuItem setActive={setActive} active={active} item="Products" href="/products">
-          <div className="products-grid">
+          <div className="products-simplified-grid">
             <ProductItem
               title="Artists"
-              description="Meet our talented musicians and performers"
+              description="Meet our talented musicians and performers who bring creative visions to life"
               href="/artists"
-            />
-            <ProductItem
-              title="Clients"
-              description="Our valued clients and partnerships"
-              href="/clients"
+              icon="🎤"
             />
             <ProductItem
               title="Albums"
-              description="Featured albums and music releases"
+              description="Featured albums and music releases showcasing our production quality"
               href="/albums"
+              icon="💿"
+            />
+            <ProductItem
+              title="Clients"
+              description="Our valued clients and partnerships that drive our success"
+              href="/clients"
+              icon="🤝"
             />
           </div>
         </ButtonMenuItem>

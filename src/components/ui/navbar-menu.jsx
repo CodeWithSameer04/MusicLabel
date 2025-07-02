@@ -116,9 +116,11 @@ export const ProductItem = ({
   title,
   description,
   href,
+  icon,
 }) => {
   return (
     <Link to={href} className="product-item">
+      {icon && <div className="product-icon">{icon}</div>}
       <div>
         <h4 className="product-title">
           {title}
