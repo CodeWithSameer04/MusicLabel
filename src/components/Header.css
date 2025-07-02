@@ -115,10 +115,10 @@
 /* Dropdown Container */
 .dropdown-container {
   position: absolute;
-  top: calc(100% + 1.2rem);
+  top: calc(100% + 0.5rem);
   left: 50%;
   transform: translateX(-50%);
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
 
 .dropdown-panel {
@@ -158,23 +158,39 @@
 /* Centered Services Layout */
 .services-centered-layout {
   padding: 16px;
-  min-width: 360px;
+  min-width: 300px;
   transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .services-buttons-centered {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
   align-items: center;
   animation: fadeInUp 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Service Category Windows */
+.audio-services-window,
+.video-services-window {
+  padding: 12px;
+  min-width: 280px;
+  max-width: 320px;
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeInUp 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-top: -0.5rem;
+  padding-top: 1rem;
+}
+
 .services-grid-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 8px;
-  margin-top: 12px;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-top: 8px;
   animation: fadeInUp 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -196,18 +212,18 @@
 
 .service-button {
   width: 100%;
-  padding: 20px 32px;
+  padding: 12px 20px;
   background: var(--bg-primary);
   border: 2px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: 12px;
   color: var(--text-primary);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1);
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   will-change: transform, background-color, box-shadow;
-  min-width: 160px;
+  min-width: 130px;
 }
 
 .service-button:hover {
@@ -276,21 +292,21 @@
 .service-category-title {
   color: var(--text-primary);
   font-weight: 700;
-  margin-bottom: 10px;
-  font-size: 12px;
-  margin: 0 0 10px 0;
-  padding: 0 8px;
-  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+  font-size: 11px;
+  margin: 0 0 8px 0;
+  padding: 0 4px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
 /* Service Items */
 .service-item {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px;
-  border-radius: 12px;
+  align-items: anchor-center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1);
   color: inherit;
@@ -314,26 +330,27 @@
 }
 
 .service-icon {
-  font-size: 20px;
+  font-size: 12px;
   line-height: 1;
-  margin-top: 2px;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .service-title {
   color: var(--text-primary);
   font-weight: 600;
-  margin-bottom: 4px;
-  font-size: 14px;
-  margin: 0 0 4px 0;
-  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  margin: 0 0 3px 0;
+  letter-spacing: 0.2px;
 }
 
 .service-description {
   color: var(--text-secondary);
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 10px;
+  line-height: 1.3;
   margin: 0;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 /* Products Grid - Legacy */
@@ -347,30 +364,34 @@
 
 /* Simplified Products Grid */
 .products-simplified-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 350px;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  min-width: 500px;
+  padding: 12px;
 }
 
 .product-icon {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
-  margin-top: 2px;
+  margin-bottom: 4px;
   flex-shrink: 0;
 }
 
 .product-item {
   display: flex;
-  gap: 12px;
-  padding: 12px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 16px;
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: inherit;
   border: 1px solid var(--border-color);
   background: var(--bg-primary);
+  min-height: 120px;
 }
 
 .product-item:hover {
@@ -399,11 +420,12 @@
 
 .product-description {
   color: var(--text-secondary);
-  font-size: 12px;
-  max-width: 280px;
+  font-size: 11px;
+  max-width: 180px;
   line-height: 1.4;
   margin: 0;
   opacity: 0.9;
+  text-align: center;
 }
 
 /* Hovered Link */

@@ -115,11 +115,24 @@ h3 {
   color: var(--text-primary);
 }
 
+
+/* display flex nhi lag rha yaha pe */
+
 .stats-grid {
-  display: grid;
+  border: 2px solid rgb(186, 4, 4); /* Optional, for debugging */
+  display: flex;
+  /* border: 2px solid rgb(186, 4, 4); */
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
+  justify-content: center;
   margin: 2rem 0;
+  width: 100%;
+  flex-wrap: wrap; /* Add this for wrapping items */
+}
+
+.stat-item {
+  flex: 1 1 200px; /* allows flexible layout with a minimum width */
+  text-align: center;
 }
 
 .stat-item h3 {
@@ -132,6 +145,13 @@ h3 {
   font-size: 1rem;
   color: var(--text-secondary);
 }
+
+
+
+/* pata nhi kya dikkat he behenchod  */
+
+
+
 
 .cta-section {
   background: #3b82f6;

@@ -1,6 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Hero from './components/hero/Hero';
-import Footer from './components/footer/Footer';
 import { ThemeProvider } from './contexts/ThemeContext';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
@@ -72,7 +71,6 @@ function App() {
         <Route path="/services/video/editing-post" element={<PageWrapper><EditingPost /></PageWrapper>} />
         <Route path="/services/video/graphics-vfx" element={<PageWrapper><GraphicsVFX /></PageWrapper>} />
       </Routes>
-      <Footer />
     </ThemeProvider>
   );
 }

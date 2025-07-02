@@ -1,0 +1,28 @@
+/* Animation styles for Footer component */
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Hover effects for social links */
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+/* Theme transition effects */
+.theme-button {
+  transition: all 0.3s ease;
+}
+
+.link-hover {
+  transition: color 0.2s ease;
+}

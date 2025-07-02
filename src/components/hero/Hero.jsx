@@ -28,7 +28,7 @@ const Hero = () => {
       setCurrentImageIndex((prevIndex) => 
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 25000); // 25 seconds
+    }, 10000); // 25 seconds
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, images.length]);

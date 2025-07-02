@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 
 const PageWrapper = ({ children }) => {
   const location = useLocation();
@@ -12,6 +13,7 @@ const PageWrapper = ({ children }) => {
       <div className="page-content">
         {children}
       </div>
+      <Footer />
     </div>
   );
 };

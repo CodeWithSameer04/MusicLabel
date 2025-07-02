@@ -10,6 +10,9 @@ function Contacts() {
     message: '',
     type: 'general'
   });
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState('success'); // 'success' or 'error'
 
   const handleChange = (e) => {
     setFormData({
@@ -22,8 +25,19 @@ function Contacts() {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
-    alert('Message sent successfully! We\'ll get back to you soon.');
+    
+    // Show success message
+    setAlertMessage('Message sent successfully! We\'ll get back to you soon.');
+    setAlertType('success');
+    setShowAlert(true);
+    
+    // Clear form
     setFormData({ name: '', email: '', subject: '', message: '', type: 'general' });
+    
+    // Hide alert after 5 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
   };
 
   return (
@@ -39,48 +53,72 @@ function Contacts() {
 
       {/* Contact Options Grid */}
       <div className="contact-options-grid">
-        <div className="contact-option">
-          <div className="option-icon">
-            <MessageCircle size={24} />
+        <div className="contact-option sales-card">
+          <div className="option-icon sales-icon">
+            <MessageCircle size={28} />
           </div>
-          <h3>Chat to sales</h3>
-          <p>Speak to our friendly team.</p>
-          <a href="mailto:sales@rvmentertainment.com" className="contact-link">
-            sales@rvmentertainment.com
-          </a>
+          <h3>Chat to Sales</h3>
+          <p>Speak to our friendly sales team about our services and packages.</p>
+          <div className="card-actions">
+            <a href="mailto:sales@rvmentertainment.com" className="contact-link primary-card-link">
+              💼 Contact Sales
+            </a>
+            <div className="card-status">
+              <span className="status-indicator available"></span>
+              <span className="status-text">Available Now</span>
+            </div>
+          </div>
         </div>
 
-        <div className="contact-option">
-          <div className="option-icon">
-            <Headphones size={24} />
+        <div className="contact-option support-card">
+          <div className="option-icon support-icon">
+            <Headphones size={28} />
           </div>
-          <h3>Chat to support</h3>
-          <p>We're here to help.</p>
-          <a href="mailto:support@rvmentertainment.com" className="contact-link">
-            support@rvmentertainment.com
-          </a>
+          <h3>Chat to Support</h3>
+          <p>Get instant help from our support team. We're available 24/7 to assist you.</p>
+          <div className="support-actions">
+            <a href="mailto:support@rvmentertainment.com" className="contact-link primary-support-link">
+              📧 Email Support
+            </a>
+            <div className="support-status">
+              <span className="status-indicator online"></span>
+              <span className="status-text">Online Now</span>
+            </div>
+          </div>
         </div>
 
-        <div className="contact-option">
-          <div className="option-icon">
-            <MapPin size={24} />
+        <div className="contact-option location-card">
+          <div className="option-icon location-icon">
+            <MapPin size={28} />
           </div>
-          <h3>Visit us</h3>
-          <p>Visit our studio HQ.</p>
-          <a href="#" className="contact-link">
-            View on Google Maps
-          </a>
+          <h3>Visit Our Studio</h3>
+          <p>Come visit our state-of-the-art studio and experience our facilities firsthand.</p>
+          <div className="card-actions">
+            <a href="#" className="contact-link primary-card-link">
+              🗺️ View Location
+            </a>
+            <div className="card-status">
+              <span className="status-indicator open"></span>
+              <span className="status-text">Open Today</span>
+            </div>
+          </div>
         </div>
 
-        <div className="contact-option">
-          <div className="option-icon">
-            <Phone size={24} />
+        <div className="contact-option phone-card">
+          <div className="option-icon phone-icon">
+            <Phone size={28} />
           </div>
-          <h3>Call us</h3>
-          <p>Mon-Fri from 8am to 5pm.</p>
-          <a href="tel:+15551234567" className="contact-link">
-            +1 (555) 123-4567
-          </a>
+          <h3>Call Us Direct</h3>
+          <p>Speak directly with our team for immediate assistance and quick answers.</p>
+          <div className="card-actions">
+            <a href="tel:+15551234567" className="contact-link primary-card-link">
+              📞 +1 (555) 123-4567
+            </a>
+            <div className="card-status">
+              <span className="status-indicator business-hours"></span>
+              <span className="status-text">Mon-Fri 8am-5pm</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -88,6 +126,24 @@ function Contacts() {
       <div className="contact-form-section">
         <h2>Send us a message</h2>
         <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        
+        {showAlert && (
+          <div className={`alert-message ${alertType}`}>
+            <div className="alert-content">
+              <div className="alert-icon">
+                {alertType === 'success' ? '✓' : '✕'}
+              </div>
+              <div className="alert-text">{alertMessage}</div>
+              <button 
+                className="alert-close" 
+                onClick={() => setShowAlert(false)}
+                type="button"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        )}
         
         <form onSubmit={handleSubmit} className="modern-contact-form">
           <div className="form-row">

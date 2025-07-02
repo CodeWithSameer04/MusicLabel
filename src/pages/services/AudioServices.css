@@ -2,6 +2,8 @@
   min-height: 100vh;
   padding: 120px 20px 40px;
   background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .audio-services-header {
@@ -31,20 +33,20 @@
 
 .audio-services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto 80px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 64px;
 }
 
 .audio-service-card {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
-  padding: 30px;
-  border-radius: 20px;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 16px;
   text-decoration: none;
-  color: inherit;
+  color: var(--text-primary);
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,21 +81,27 @@
 
 .audio-service-card:hover .audio-service-content h3,
 .audio-service-card:hover .audio-service-content p {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .audio-service-card:hover .audio-service-arrow {
-  color: #ffffff;
+  color: #ffffff !important;
   transform: translateX(5px);
 }
 
+.audio-service-card:hover .audio-service-icon {
+  color: #ffffff !important;
+}
+
 .audio-service-icon {
-  font-size: 3rem;
+  font-size: 2.2rem;
   line-height: 1;
   margin-top: 5px;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .audio-service-content {
@@ -103,19 +111,21 @@
 }
 
 .audio-service-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   letter-spacing: 0.3px;
+  transition: color 0.3s ease;
 }
 
 .audio-service-content p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0 0 16px 0;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
   opacity: 0.9;
+  transition: color 0.3s ease;
 }
 
 .audio-service-arrow {
@@ -131,19 +141,21 @@
   text-align: center;
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
-  border-radius: 24px;
-  padding: 60px 40px;
-  max-width: 600px;
+  border-radius: 20px;
+  padding: 48px 32px;
+  max-width: 560px;
   margin: 0 auto;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .audio-cta-section h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  transition: color 0.3s ease;
 }
 
 .audio-cta-section p {
@@ -151,23 +163,24 @@
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 32px;
+  transition: color 0.3s ease;
 }
 
 .audio-cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 44px;
+  padding: 16px 32px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #ffffff;
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 40px;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-  letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  letter-spacing: 0.4px;
   text-transform: uppercase;
 }
 
