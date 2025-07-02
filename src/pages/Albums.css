@@ -1,0 +1,142 @@
+/* Albums Page Styles */
+.albums-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.albums-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.album-card {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.album-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.album-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  border-bottom: 2px solid rgba(78, 205, 196, 0.3);
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.songs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.song-item {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+  margin: 5px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.song-item:last-child {
+  border-bottom: none;
+}
+
+.song-item:hover {
+  background-color: var(--bg-primary);
+  padding-left: 15px;
+}
+
+.song-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.song-name {
+  font-size: 1.1em;
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .albums-container {
+    padding: 15px;
+  }
+  
+  .albums-title {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+  
+  .albums-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px 0;
+  }
+  
+  .album-card {
+    padding: 20px;
+  }
+  
+  .album-title {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .albums-container {
+    padding: 10px;
+  }
+  
+  .albums-title {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+  }
+  
+  .album-card {
+    padding: 15px;
+  }
+  
+  .album-title {
+    font-size: 1.2em;
+  }
+  
+  .song-name {
+    font-size: 1em;
+  }
+}

@@ -1,15 +1,15 @@
-import { useLocation } from 'react-router-dom';
-import React from 'react';
+// import { useLocation } from 'react-router-dom';
+// import React from 'react';
 
-const Main = ({ children }) => {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
+// const Main = ({ children }) => {
+//   const location = useLocation();
+//   const isHome = location.pathname === "/";
 
-  return (
-    <main style={{ paddingTop: isHome ? 0 : "55px" }}>
-      {children}
-    </main>
-  );
-};
+//   return (
+//     <main style={{ paddingTop: isHome ? 0 : "55px" }}>
+//       {children}
+//     </main>
+//   );
+// };
 
-export default Main;
+// export default Main;
