@@ -68,7 +68,7 @@
 .heroContent {
   position: relative;
   z-index: 3;
-  color: #fff;
+  color: var(--hero-text-primary, #ffffff);
   text-align: center;
   width: 100%;
   max-width: 700px;
@@ -85,31 +85,39 @@
   letter-spacing: -1px;
   margin-bottom: 1.2rem;
   line-height: 1.1;
+  color: var(--hero-text-primary, #ffffff);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .heroContent p {
   font-size: 1.25rem;
-  opacity: 0.92;
+  color: var(--hero-text-secondary, rgba(255, 255, 255, 0.92));
   margin-bottom: 2rem;
   max-width: 500px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .heroBtn {
   display: inline-block;
   padding: 0.85em 2.2em;
-  background: rgb(180, 180, 180);
-  color: #181818;
+  background: var(--hero-btn-bg, rgba(255, 255, 255, 0.9));
+  color: var(--hero-btn-text, #181818);
   border-radius: 32px;
   font-weight: bold;
   font-size: 1.15rem;
   text-decoration: none;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--hero-btn-border, rgba(255, 255, 255, 0.2));
 }
 .heroBtn:hover {
-  background: #ffffff;
-  color: #181818;
-  transform: translateY(-2px) scale(1.04);
+  background: var(--hero-btn-hover-bg, #ffffff);
+  color: var(--hero-btn-hover-text, #181818);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  border-color: var(--hero-btn-hover-border, rgba(255, 255, 255, 0.4));
 }
 
 /* Responsive */

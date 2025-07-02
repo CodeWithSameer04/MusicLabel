@@ -13,6 +13,8 @@ import FAQs from './pages/FAQs';
 import Artists from './pages/Artists';
 import Services from './pages/Services';
 import Products from './pages/Products';
+import AudioServices from './pages/services/AudioServices';
+import VideoServices from './pages/services/VideoServices';
 import PageWrapper from './components/PageWrapper';
 
 // Audio Services
@@ -52,6 +54,8 @@ function App() {
         <Route path="/faqs" element={<PageWrapper><FAQs /></PageWrapper>} />
         <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
         <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
+        <Route path="/services/audio" element={<PageWrapper><AudioServices /></PageWrapper>} />
+        <Route path="/services/video" element={<PageWrapper><VideoServices /></PageWrapper>} />
         
         {/* Audio Services Routes */}
         <Route path="/services/audio/music-label" element={<PageWrapper><MusicLabel /></PageWrapper>} />
